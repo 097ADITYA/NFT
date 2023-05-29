@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
+import {useRouter} from "next/router";
 
 //INTERNAL IMPORT
 
@@ -14,6 +15,7 @@ import { Button } from "../componentsindex";
 import images from "../../img";
 
 import {NFTMarketplaceContext} from "../../Context/NFTMarketplaceContext";
+import { DiJqueryLogo } from "react-icons/di";
 
 const NavBar = () => {
     //----USESTATE COMPONNTS
@@ -22,6 +24,8 @@ const NavBar = () => {
     const [notification, setNotification] = useState(false);
     const [profile, setProfile] = useState(false);
     const [openSideMenu, setOpenSideMenu] = useState(false);
+
+    const router = useRouter();
   
     const openMenu = (e) => {
       const btnText = e.target.innerText;
@@ -83,12 +87,8 @@ const NavBar = () => {
         <div className={Style.navbar_container}>
           <div className={Style.navbar_container_left}>
             <div className={Style.logo}>
-              <Image
-                src={images.logo1}
-                alt="NFT MARKET PLACE"
-                width={150}
-                height={40}
-              />
+              
+              <DiJqueryLogo onClick={() => router.push("/")}/>
             </div>
             <div className={Style.navbar_container_left_box_input}>
               <div className={Style.navbar_container_left_box_input_box}>
@@ -132,11 +132,11 @@ const NavBar = () => {
             {/* CREATE BUTTON SECTION */}
             <div className={Style.navbar_container_right_button}>
               {currentAccount == "" ? (
-                <Button btnName="Connect" handleClick={() => connectWallet()} />
+                <Button btnName="Connect" handleClick={() => connectWallet() } />
               ) : (
-                <a href="/uploadNFT">
-                  <Button btnName="Create NFT" handleClick={() => {}} />
-                </a>
+                
+                  <Button btnName="Create NFT" handleClick={() => router.push('/uploadNFT')} />
+                
               )}
             </div>
   
