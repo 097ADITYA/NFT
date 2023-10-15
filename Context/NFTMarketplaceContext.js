@@ -7,8 +7,7 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 
 //const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
-const projectId = "2PabozzRgvxlsQVF1OhX2AYmhQC";
-const projectSecretKey = "8d683b738a3a0648e986492089271566" ;
+
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
   "base64"
 )}`;
